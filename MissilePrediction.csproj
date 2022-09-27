@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B142BA55-6741-49AF-B2B0-F27582D039B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EchKode.PBMods.MissilePrediction</RootNamespace>
+    <AssemblyName>MissilePrediction</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SteamInstallationPath>C:\Program Files (x86)\Steam\steamapps\common\Phantom Brigade</SteamInstallationPath>
+    <EpicInstallationPath>C:\Program Files\Epic Games\PhantomBrigade</EpicInstallationPath>
+    <GameInstallationPath>$(SteamInstallationPath)</GameInstallationPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameInstallationPath)\PhantomBrigade_Data\Managed\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameInstallationPath)\PhantomBrigade_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameInstallationPath)\PhantomBrigade_Data\Managed\Entitas.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameInstallationPath)\PhantomBrigade_Data\Managed\Entitas.CodeGeneration.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="QFSW.QC, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameInstallationPath)\PhantomBrigade_Data\Managed\QFSW.QC.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameInstallationPath)\PhantomBrigade_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameInstallationPath)\PhantomBrigade_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameInstallationPath)\PhantomBrigade_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityUtilities, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameInstallationPath)\PhantomBrigade_Data\Managed\UnityUtilities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Features\MotionComputeFeature.cs" />
+    <Compile Include="Generated\EkTime\Components\EkTimeCurrentTimeTargetComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionPendingPlaceRoundComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionRoundQueueComponent.cs" />
+    <Compile Include="Generated\EkTime\Components\EkTimeSampleCountComponent.cs" />
+    <Compile Include="Generated\EkTime\Components\EkTimeSlicesPerSecondComponent.cs" />
+    <Compile Include="Generated\EkTime\Components\EkTimeTimeStepComponent.cs" />
+    <Compile Include="Generated\EkTime\Components\EkTimeCurrentTimeSliceComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionMotionExtraDataComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionCombatSourceLinkComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionActivationCountComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionActivationTimingComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionRoundSequenceNumberComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionActionStartTimeComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionColorsComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionPlacedComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionScaleComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionRoundStartTimeComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionActionLinkComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionFuseProximityDistanceComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionLaunchedInTurnComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionPredictionMotionReadyComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionProjectileLifetimeComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionSliceIndexComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionGuidanceDataComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionTargetEntityLinkComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionTargetOffsetComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionTargetPositionComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionAuthoritativeRigidbodyComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionAssetKeyComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionAssetComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionGuidancePIDComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionFlightInfoComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionStartPositionComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionMotionTimeSlicesComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionTimeToLiveComponent.cs" />
+    <Compile Include="Generated\EkPrediction\Components\EkPredictionProjectileLinkComponent.cs" />
+    <Compile Include="Generated\EkPrediction\EkPredictionComponentsLookup.cs" />
+    <Compile Include="Generated\EkTime\EkTimeComponentsLookup.cs" />
+    <Compile Include="Generated\EkPrediction\EkPredictionAttribute.cs" />
+    <Compile Include="Generated\EkTime\EkTimeAttribute.cs" />
+    <Compile Include="Generated\EkPrediction\EkPredictionContext.cs" />
+    <Compile Include="Generated\EkTime\EkTimeContext.cs" />
+    <Compile Include="Generated\EkPrediction\EkPredictionMatcher.cs" />
+    <Compile Include="Generated\EkTime\EkTimeMatcher.cs" />
+    <Compile Include="Generated\Contexts.cs" />
+    <Compile Include="Generated\EkPrediction\EkPredictionEntity.cs" />
+    <Compile Include="Generated\EkTime\EkTimeEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\MotionExtraDataComponent.cs" />
+    <Compile Include="Data\MotionExtraInfo.cs" />
+    <Compile Include="Diagnostics\LoggingManipulator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\CombatSourceLinkComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ActivationCountComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ActivationTimingComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\RoundSequenceNumberComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ActionStartTimeComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ColorsComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\PlacedComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ScaleComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Functions\PredictionDouble.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\RoundStartTimeComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\CurrentTimeTargetComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\PendingPlaceRoundComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\RoundQueueComponent.cs" />
+    <Compile Include="Data\RoundInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ActionLinkComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\FuseProximityDistanceComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\SampleCountComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\LaunchedInTurnComponent.cs" />
+    <Compile Include="Diagnostics\Console.cs" />
+    <Compile Include="Diagnostics\ConsoleExtensions.cs" />
+    <Compile Include="Diagnostics\Constants.cs" />
+    <Compile Include="Diagnostics\PredictionInspector.cs" />
+    <Compile Include="Diagnostics\PredictionInspectorInternals.cs" />
+    <Compile Include="Features\MissilePredictionFeatureInstaller.cs" />
+    <Compile Include="Patches\CIViewCombatTimeline.cs" />
+    <Compile Include="Systems\ActionDisposedSystem.cs" />
+    <Compile Include="Systems\ActionDragSystem.cs" />
+    <Compile Include="Systems\ActionLinkSystem.cs" />
+    <Compile Include="Systems\AIPhaseTrackingSystem.cs" />
+    <Compile Include="Systems\FlightTerminationSystem.cs" />
+    <Compile Include="Systems\GroundCollisionSystem.cs" />
+    <Compile Include="Systems\ProjectileVisibilitySystem.cs" />
+    <Compile Include="Systems\LaunchedInTurnCleanupSystem.cs" />
+    <Compile Include="Systems\ModeTrackingSystem.cs" />
+    <Compile Include="Systems\RoundPlacementSystem.cs" />
+    <Compile Include="Systems\UnitTrackingSystem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\SlicesPerSecondComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\TimeStepComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\PredictionMotionReadyComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ProjectileLifetimeComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\SliceIndexComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\GuidanceDataComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\TargetEntityLinkComponent.cs" />
+    <Compile Include="Components\TargetOffsetComponent.cs" />
+    <Compile Include="Components\TargetPositionComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\AuthoritativeRigidbodyComponent.cs" />
+    <Compile Include="Components\AssetKeyComponent.cs" />
+    <Compile Include="Components\AssetComponent.cs" />
+    <Compile Include="Components\GuidancePIDComponent.cs" />
+    <Compile Include="Components\FlightInfoComponent.cs" />
+    <Compile Include="Components\StartPositionComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\MotionTimeSlicesComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\CurrentTimeSliceComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Features\MissilePredictionFeature.cs" />
+    <Compile Include="Data\MotionTimeSlice.cs" />
+    <Compile Include="ModSettings.cs" />
+    <Compile Include="SystemInstaller.cs" />
+    <Compile Include="Systems\PredictionGuidanceProgramSystem.cs" />
+    <Compile Include="Systems\PredictionGuidedControlSystem.cs" />
+    <Compile Include="Systems\PredictionRigidbodyDriverSystem.cs" />
+    <Compile Include="Systems\AuthoritativeRigidbodySystem.cs" />
+    <Compile Include="Components\TimeToLiveComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ProjectileLinkComponent.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Patches\Heartbeat.cs" />
+    <Compile Include="ModLink.cs" />
+    <Compile Include="Patch.cs" />
+    <Compile Include="Systems\PredictionMotionSystem.cs" />
+    <Compile Include="Systems\PredictionTearDownSystem.cs" />
+    <Compile Include="Systems\PredictionTimeSliceSystem.cs" />
+    <Compile Include="Systems\ProjectileLinkSystem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
