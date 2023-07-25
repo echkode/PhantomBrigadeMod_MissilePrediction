@@ -20,11 +20,15 @@ I'm not sure that showing missile trajectories in the planning phase is a good i
 
 To give an idea of what this mod does, here's a short clip from one of my battles. I have a unit that's being pursued by a pack of missiles and I'm able to time a dash around a hill so that the missiles get confused but don't have enough time to recover and turn around.
 
-![planning a dash around hill to escape missiles](Media/evasion_planning.mp4)
+<video controls src="https://github.com/echkode/PhantomBrigadeMod_MissilePrediction/assets/48565771/fb3d52c9-41cb-41fa-9ddf-d050d0dfb8d2">
+  <p>planning a dash around hill to escape missiles</p>
+</video>
 
 Here's what it looks like in the execution phase. The missiles do indeed miss and crash into the ground. However, you'll notice that the prediction is not 100% accurate. The prediction shows all the missiles clearing the hilltop but during execution, a couple of missiles clip the hill.
 
-![seeing the escape in execution](Media/evasion_execution.mp4)
+<video controls src="https://github.com/echkode/PhantomBrigadeMod_MissilePrediction/assets/48565771/18410cb2-a994-40af-a3de-8520bc8ac148">
+  <p>seeing the escape in execution</p>
+</video>
 
 This is a lengthy readme so feel free to jump to the section that interests you.
 
@@ -60,7 +64,9 @@ If the target unit has its movement path changed, the missile has to be resample
 
 There is no error correction the iterative algorithm. Errors can build up quickly and one of the most important sources of error is the initial starting position of the missile. The projected attack lines are drawn from the center point of the unit. However, this is not where projectiles of any type are fired from. It's good enough for ballistic projectiles but for missiles you really need the actual firing point. Here's an example showing why it matters.
 
-![mech firing missile over shoulder of another mech](Media/over_the_shoulder.mp4)
+<video controls src="https://github.com/echkode/PhantomBrigadeMod_MissilePrediction/assets/48565771/ae53f31d-8175-4f3d-b0fc-2bda43e09bda">
+  <p>mech firing missile over shoulder of another mech</p>
+</video>
 
 If the center point of the mech with the missile launcher were used, the missile would blast mech on the left square in the back instead of shooting over its left shoulder. You can see the difference between where the projected firing line is drawn and the actual trajectory of the missile matters in a case like this.
 
@@ -72,11 +78,15 @@ The side effect is that the timeline jumps about and the projected units on the 
 
 Or, more appropriately, the lack of hit detection. I intentionally do not do hit detection with buildings, environment props or units other than the targeted one. These objects may not actually be there in the execution phase so I error on the side of least surprise. Here's an example showing the missiles going through a building in the planning phase.
 
-![missiles sailing right through a building](Media/collision_planning.mp4)
+<video controls src="https://github.com/echkode/PhantomBrigadeMod_MissilePrediction/assets/48565771/515da258-e5f9-4796-bd2f-d6441e419e11">
+  <p>missiles sailing right through a building</p>
+</video>
 
 In the execution phase, though, the missiles explode on contact with the building.
 
-![missiles are destroyed instead in the execution phase](Media/collision_execution.mp4)
+<video controls src="https://github.com/echkode/PhantomBrigadeMod_MissilePrediction/assets/48565771/f8efc04a-a5b3-4357-83b0-ba91d4c7b587">
+  <p>missiles are destroyed instead in the execution phase</p>
+</video>
 
 If the missiles have a large impact value, the leading missiles may blow a hole large enough in the building for the trailing missiles to pass through.
 
@@ -95,5 +105,3 @@ I predict that this mod, if it works as I envision, will make missiles a bit und
 ## Technical Notes
 
 The code is a bit edgy. It's still in an exploratory form. Some areas I don't fully understand and I'm still researching. There are parts that I don't know how to do so I've been trying out various solutions. And then there are a boatload of glitches that need instrumentation and lots of logging to chase down.
-
-I'm putting this up as a work in progress in the hopes that it inspires someone, either at BYG or in the modding community, to take a crack at this, especially from a designer/game-play perspective.
