@@ -1,5 +1,7 @@
 # MissilePrediction
 
+**This mod is obsolete.** Missile prediction was added to the game in the 1.1 release.
+
 A library mod for [Phantom Brigade (Experimental)](https://braceyourselfgames.com/phantom-brigade/) that shows missile trajectories in the planning phase.
 
 It is compatible with game version **1.0.5-5828E_Steam**. That is an **EXPERIMENTAL** release. All library mods are fragile and susceptible to breakage whenever a new version is released.
